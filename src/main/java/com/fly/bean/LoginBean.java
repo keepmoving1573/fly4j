@@ -1,25 +1,27 @@
 package com.fly.bean;
 
+import com.fly.util.MD5Utils;
+
 /**
  * @author <a href="mailto:huanhuan_com@yeah.net">詹欢欢</a>
  * @since 2017/2/19 - 21:17
  */
 public class LoginBean {
 
-    private String email;
+    private String userName;
     private String password;
     private String vercode;
 
-    public String getEmail() {
-        return email;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
-        return password;
+        return MD5Utils.md5String(password);
     }
 
     public void setPassword(String password) {

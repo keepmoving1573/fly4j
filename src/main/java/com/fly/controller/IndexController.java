@@ -1,12 +1,11 @@
 package com.fly.controller;
 
 import com.fly.bean.LoginBean;
-import org.springframework.http.MediaType;
+import com.fly.model.User;
+import com.fly.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class IndexController {
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
     public String index(){
@@ -34,9 +36,12 @@ public class IndexController {
 
     @RequestMapping(value = {"user/login.html", "user/login"}, method = RequestMethod.POST)
     public String login(LoginBean loginBean, ModelMap modelMap){
-        modelMap.put("uid", "123");
-        modelMap.put("msg", 1);
-        return "index";
+        User user = userService.selectUser(loginBean.getUserName(), loginBean.getPassword());
+        if (user == null) {
+            return "/user/login";
+        } else {
+            return "/user/home";
+        }
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
