@@ -8,4 +8,6 @@ import com.fly.model.User;
  */
 public interface UserService {
     User selectUser(String email, String password);
+
+    User selectUserById(String uid);
 }

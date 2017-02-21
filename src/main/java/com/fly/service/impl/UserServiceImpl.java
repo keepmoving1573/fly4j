@@ -22,4 +22,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(password);
         return userMapper.selectUser(user);
     }
+
+    public User selectUserById(String uid) {
+        User user = new User();
+        user.setId(uid);
+        return userMapper.selectUser(user);
+    }
 }
