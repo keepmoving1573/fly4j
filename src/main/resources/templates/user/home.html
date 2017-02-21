@@ -43,17 +43,20 @@
 
 <div class="fly-home" style="background-image: url();">
   <img src="http://tp4.sinaimg.cn/1345566427/180/5730976522/0" alt="{{info.username}}">
-  <h1>贤心
-  <i class="iconfont icon-nan"></i> 
-  <!-- <i class="iconfont icon-nv"></i> -->
-  
-  <!-- <span style="color:#c00;">（超级码农）</span>
-  <span style="color:#5FB878;">（活雷锋）</span>
-  <span>（该号已被封）</span> -->
+  <h1>${user.nickName}
+    <#if user.sex==1>
+      <i class="iconfont icon-nan"></i>
+      <#else>
+        <i class="iconfont icon-nv"></i>
+    </#if>
+
+    <!-- <span style="color:#c00;">（超级码农）</span>
+    <span style="color:#5FB878;">（活雷锋）</span>
+    <span>（该号已被封）</span> -->
   </h1>
   <div class="layui-main">
     <p style="display: inline-block; max-width: 800px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #999; margin-top: 10px;">
-      这个人懒得留下签名
+      ${user.signature?default('这个人很懒，什么都没留下')}
     </p>
   </div>
   <!--<div class="fly-sns">
@@ -105,9 +108,9 @@
     </div>
     <div class="home-right">
       <ul class="home-info">
-        <li><i class="iconfont icon-zuichun"></i>拥有飞吻：<span style="color: #FF7200;">5200</span></li>
-        <li><i class="iconfont icon-shijian"></i>加入时间：<span>2016-10-26</span></li>
-        <li><i class="iconfont icon-chengshi"></i>城市：<span>杭州</span></li>
+        <li><i class="iconfont icon-zuichun"></i>拥有飞吻：<span style="color: #FF7200;">${user.kissNumber}</span></li>
+        <li><i class="iconfont icon-shijian"></i>加入时间：<span>${user.createTime?date('yyyy-MM-dd')}</span></li>
+        <li><i class="iconfont icon-chengshi"></i>城市：<span>${user.city}</span></li>
       </ul>
     </div>
   </div>

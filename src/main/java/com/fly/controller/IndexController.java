@@ -41,6 +41,7 @@ public class IndexController {
             modelMap.put("msg", "用户名密码错误");
             return "user/login";
         } else {
+            modelMap.put("user", user);
             return "/user/home";
         }
     }
