@@ -29,17 +29,17 @@ public class IndexController {
         return "/user/reg";
     }
 
-    @RequestMapping(value = {"user/login.html", "user/login"}, method = RequestMethod.GET)
+    @RequestMapping(value = "login", method = RequestMethod.GET)
     public String toLogin(){
-        return "/user/login";
+        return "user/login";
     }
 
-    @RequestMapping(value = {"user/login.html", "user/login"}, method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(LoginBean loginBean, ModelMap modelMap){
         User user = userService.selectUser(loginBean.getUserName(), loginBean.getPassword());
         if (user == null) {
             modelMap.put("msg", "用户名密码错误");
-            return "/user/login";
+            return "user/login";
         } else {
             return "/user/home";
         }
