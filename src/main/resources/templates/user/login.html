@@ -86,6 +86,12 @@
 </div>
 <script src="../res/layui/layui.js"></script>
 <script>
+  layui.use('layer', function(){
+	  var layer = layui.layer;
+	  <#if msg??>
+		layer.msg('${msg}', {icon: 5});
+	  </#if>
+  });
 </script>
 
 </body>

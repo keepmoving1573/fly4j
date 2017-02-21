@@ -38,6 +38,7 @@ public class IndexController {
     public String login(LoginBean loginBean, ModelMap modelMap){
         User user = userService.selectUser(loginBean.getUserName(), loginBean.getPassword());
         if (user == null) {
+            modelMap.put("msg", "用户名密码错误");
             return "/user/login";
         } else {
             return "/user/home";
