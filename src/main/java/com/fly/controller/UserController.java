@@ -1,6 +1,6 @@
 package com.fly.controller;
 
-import com.fly.bean.LoginBean;
+import com.fly.bean.UserBean;
 import com.fly.model.User;
 import com.fly.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +32,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "user/updateInfo", method = RequestMethod.POST)
-    public String updateInfo(LoginBean loginBean, ModelMap modelMap) {
-        User user = userService.selectUser(loginBean.getUserName(), loginBean.getPassword());
-        if (user == null) {
-            modelMap.put("msg", "用户名密码错误");
-            return "user/login";
-        } else {
-            modelMap.put("user", user);
-            return "/user/home";
-        }
+    public String updateInfo(UserBean userBean, ModelMap modelMap) {
+        userService.updateInfo(userBean);
+        modelMap.put("msg", "修改成功");
+        return "user/set";
     }
 
 }

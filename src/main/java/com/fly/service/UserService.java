@@ -1,5 +1,6 @@
 package com.fly.service;
 
+import com.fly.bean.UserBean;
 import com.fly.model.User;
 
 /**
@@ -10,4 +11,6 @@ public interface UserService {
     User selectUser(String email, String password);
 
     User selectUserById(String uid);
+
+    void updateInfo(UserBean userBean);
 }

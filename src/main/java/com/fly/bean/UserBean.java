@@ -1,95 +1,73 @@
-package com.fly.model;
+package com.fly.bean;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-public class User {
+public class UserBean {
     /**
      * 主键
      */
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
+    private String uid;
 
     /**
      * 登录名
      */
-    @Column(name = "USER_NAME")
     private String userName;
 
     /**
      * 密码
      */
-    @Column(name = "PASSWORD")
     private String password;
 
     /**
      * 昵称
      */
-    @Column(name = "NICK_NAME")
     private String nickName;
 
     /**
      * 性别,0女1男
      */
-    @Column(name = "SEX")
     private Integer sex;
 
     /**
      * 手机号
      */
-    @Column(name = "MOBILE")
     private String mobile;
 
     /**
      * 签名
      */
-    @Column(name = "SIGNATURE")
     private String signature;
 
     /**
      * 城市
      */
-    @Column(name = "CITY")
     private String city;
 
     /**
      * 飞吻数量
      */
-    @Column(name = "KISS_NUMBER")
     private Integer kissNumber;
 
     /**
      * 头像图片路径
      */
-    @Column(name = "HEAD_IMAGE")
     private String headImage;
 
     /**
      * 页面显示语言
      */
-    @Column(name = "LANGUAGE")
     private String language;
 
     /**
      * 创建时间
      */
-    @Column(name = "CREATE_TIME")
     private String createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "LAST_MODIFY_TIME")
     private String lastModifyTime;
 
-    /**
-     * 邮箱激活状态0未激活1已激活
-     */
-    @Column(name = "ACTIVE_STATUS")
     private Integer activeStatus;
 
     /**
@@ -108,6 +86,14 @@ public class User {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     /**
@@ -326,20 +312,10 @@ public class User {
         this.lastModifyTime = lastModifyTime;
     }
 
-    /**
-     * 获取邮箱激活状态0未激活1已激活
-     *
-     * @return ACTIVE_STATUS - 邮箱激活状态0未激活1已激活
-     */
     public Integer getActiveStatus() {
         return activeStatus;
     }
 
-    /**
-     * 设置邮箱激活状态0未激活1已激活
-     *
-     * @param activeStatus 邮箱激活状态0未激活1已激活
-     */
     public void setActiveStatus(Integer activeStatus) {
         this.activeStatus = activeStatus;
     }
