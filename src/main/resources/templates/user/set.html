@@ -111,7 +111,8 @@
       </div>
       
       <div class="layui-form layui-form-pane mine-view">
-        <form action="/user/repass" method="post">
+          <form action="repass" method="post">
+              <input type="hidden" name="uid" value="${user.id}"/>
           <div class="layui-form-item">
             <label for="L_nowpass" class="layui-form-label">当前密码</label>
             <div class="layui-input-inline">
@@ -188,6 +189,12 @@ layui.config({
 }).extend({
   fly: 'index'
 }).use('fly');
+layui.use('layer', function(){
+	  var layer = layui.layer;
+	  <#if msg??>
+		layer.msg('${msg}', {icon: 1});
+	  </#if>
+  });
 </script>
 
 </body>
