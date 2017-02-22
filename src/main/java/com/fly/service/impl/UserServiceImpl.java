@@ -1,9 +1,11 @@
 package com.fly.service.impl;
 
+import com.fly.bean.RepassBean;
 import com.fly.bean.UserBean;
 import com.fly.mapper.UserMapper;
 import com.fly.model.User;
 import com.fly.service.UserService;
+import com.fly.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void updateInfo(UserBean userBean) {
+    public User updateInfo(UserBean userBean) {
         User user = new User();
         user.setId(userBean.getUid());
         user.setUserName(userBean.getUserName());
@@ -41,6 +43,14 @@ public class UserServiceImpl implements UserService {
         user.setSex(userBean.getSex());
         user.setSignature(userBean.getSignature());
         user.setActiveStatus(0);
+        userMapper.updateByPrimaryKeySelective(user);
+        return user;
+    }
+
+    public void updatePassword(RepassBean repassBean) {
+        User user = new User();
+        user.setId(repassBean.getUid());
+        user.setPassword(MD5Utils.md5String(repassBean.getPass()));
         userMapper.updateByPrimaryKeySelective(user);
     }
 }

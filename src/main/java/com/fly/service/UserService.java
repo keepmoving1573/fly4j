@@ -1,5 +1,6 @@
 package com.fly.service;
 
+import com.fly.bean.RepassBean;
 import com.fly.bean.UserBean;
 import com.fly.model.User;
 
@@ -12,5 +13,7 @@ public interface UserService {
 
     User selectUserById(String uid);
 
-    void updateInfo(UserBean userBean);
+    User updateInfo(UserBean userBean);
+
+    void updatePassword(RepassBean repassBean);
 }
