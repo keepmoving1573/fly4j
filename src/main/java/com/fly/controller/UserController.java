@@ -43,6 +43,8 @@ public class UserController {
     @RequestMapping(value = "/user/repass", method = RequestMethod.POST)
     public String repass(RepassBean repassBean, ModelMap modelMap) {
         userService.updatePassword(repassBean);
+        User user = userService.selectUserById(repassBean.getUid());
+        modelMap.put("user", user);
         modelMap.put("msg", "修改成功");
         return "user/set";
     }
