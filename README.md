@@ -31,3 +31,8 @@ File -> Import Project -> select fly4j folder -> create project form existing so
 **2. 在Eclipse**
 
 File -> Import -> Existing Maven Projects -> ...
+
+#### 效果图
+![index](doc/index.jpg)
+![userInfo](doc/userInfo.jpg)
+![set](doc/set.jpg)
